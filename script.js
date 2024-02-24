@@ -36,15 +36,26 @@ function opacity_Style(current) {
 
 let current = 0;
 circle0.style.backgroundColor = 'black';
-next_btn.addEventListener('click', () => {
+
+function advanceSlider() {
     if (current === 3) {
         current = -1;
     }
     opacity_Style(current + 1);
     return current++;
+}
+
+let timing = setInterval(advanceSlider, '5000');
+
+next_btn.addEventListener('click', () => {
+    clearInterval(timing);
+    timing = setInterval(advanceSlider, '5000');
+    advanceSlider();
 })
 
 previous_btn.addEventListener('click', () => {
+    clearInterval(timing);
+    timing = setInterval(advanceSlider, '5000');
     if (current === 0) {
         current = 4;
     }
@@ -54,22 +65,33 @@ previous_btn.addEventListener('click', () => {
 
 
 circle0.addEventListener('click', () => {
+    clearInterval(timing);
+    timing = setInterval(advanceSlider, '5000');
     current = 0;
     opacity_Style(current);
     return current;
 });
 circle1.addEventListener('click', () => {
+    clearInterval(timing);
+    timing = setInterval(advanceSlider, '5000');
     current = 1;
     opacity_Style(current);
     return current;
 });
 circle2.addEventListener('click', () => {
+    clearInterval(timing);
+    timing = setInterval(advanceSlider, '5000');
     current = 2;
     opacity_Style(current);
     return current;
 });
 circle3.addEventListener('click', () => {
+    clearInterval(timing);
+    timing = setInterval(advanceSlider, '5000');
     current = 3;
     opacity_Style(current);
     return current;
 });
+
+
+
